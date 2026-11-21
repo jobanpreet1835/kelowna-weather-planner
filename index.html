@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Live weather and a seven-day forecast for Kelowna and cities around the world.">
+  <title>Kelowna Weather Planner | M2 Prototype</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <div>
+        <p class="eyebrow">COSC 219 · M2 Prototype</p>
+        <h1>Kelowna Weather Planner</h1>
+        <p class="subtitle">Check the weather before you head out.</p>
+      </div>
+      <span class="live-label">Live weather data</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="controls-panel" aria-label="Weather search and settings">
+      <form id="search-form" class="search-form">
+        <label for="city-input">Search for a city</label>
+        <div class="search-fields">
+          <input id="city-input" name="city" type="search" placeholder="e.g., Vancouver" autocomplete="off" required>
+          <button type="submit" id="search-button">Search</button>
+        </div>
+      </form>
+      <div class="unit-control">
+        <span class="setting-label">Temperature</span>
+        <div class="unit-buttons" role="group" aria-label="Temperature units">
+          <button type="button" data-unit="celsius" aria-pressed="true">°C</button>
+          <button type="button" data-unit="fahrenheit" aria-pressed="false">°F</button>
+        </div>
+      </div>
+    </section>
+
+    <p id="status" class="status" role="status" aria-live="polite">Loading live weather for Kelowna…</p>
+
+    <section class="current-card" aria-labelledby="current-heading">
+      <div class="card-heading">
+        <div>
+          <p class="eyebrow">Current conditions</p>
+          <h2 id="current-heading">Kelowna, Canada</h2>
+          <p id="updated-at" class="muted">Retrieving weather information…</p>
+        </div>
+        <button id="favorite-button" type="button" class="favorite-button" aria-pressed="false" title="Save this city">☆ Save city</button>
+      </div>
+      <div class="current-main">
+        <span id="weather-icon" class="weather-icon" aria-hidden="true">🌤️</span>
+        <div>
+          <p id="temperature" class="temperature">--°</p>
+          <p id="description" class="weather-description">Loading…</p>
+        </div>
+      </div>
+      <div class="weather-details">
+        <p><span class="detail-label">Feels like</span><strong id="feels-like">--</strong></p>
+        <p><span class="detail-label">Humidity</span><strong id="humidity">--</strong></p>
+        <p><span class="detail-label">Wind</span><strong id="wind-speed">--</strong></p>
+      </div>
+    </section>
+
+    <section class="forecast-section" aria-labelledby="forecast-heading">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Plan your week</p>
+          <h2 id="forecast-heading">7-day forecast</h2>
+        </div>
+        <p class="muted">Daily highs, lows and chance of precipitation</p>
+      </div>
+      <div id="forecast-list" class="forecast-grid">
+        <p class="muted">Forecast will appear here once the API responds.</p>
+      </div>
+    </section>
+
+    <section class="favorites-section" aria-labelledby="favorites-heading">
+      <h2 id="favorites-heading">Favourite cities</h2>
+      <p class="muted">Save cities to revisit them. Your favourites stay in this browser.</p>
+      <div id="favorites-list" class="favorites-list"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      Weather data and geocoding from <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>. Educational prototype for COSC 219.
+    </div>
+  </footer>
+</body>
+</html>
